@@ -4,15 +4,15 @@ import * as path from 'path'
 
 test('Create New Account API', async ({ request }) => {
 
-    // Read dynamic values written by OpeningAccount.spec.ts (UI test)
+    // Path: tests/API/ se tests/Utils/ jaana hai
     const checkingData = JSON.parse(
         fs.readFileSync(
-            path.join(__dirname, '../../Utils/checkingAcc.json'),
+            path.join(__dirname, '../Utils/checkingAcc.json'),
             'utf-8'
         )
     )
 
-    const customerId   = checkingData.customerId
+    const customerId    = checkingData.customerId
     const fromAccountId = checkingData.accountId
 
     console.log('customerId =', customerId)
@@ -23,9 +23,7 @@ test('Create New Account API', async ({ request }) => {
     )
 
     console.log('Status =', response.status())
-
     const body = await response.text()
-    console.log('Response =')
     console.log(body)
 
     expect(response.status()).toBe(200)
