@@ -1,0 +1,6 @@
+Login successful
+New Account ID = 17673
+API Status = 200
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><account><id>17673</id><customerId>13655</customerId><type>CHECKING</type><balance>100.00</balance></account>
+Account verified successfully through API
+Account overview verified

@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": { "ui": "playwright test tests/UI/RegisterAccount.spec.ts --project=chromium && playwright test tests/UI/OpeningAccount.spec.ts --project=chromium && playwright test tests/UI/transferFund.spec.ts --project=chromium",
+    "api": "playwright test tests/API --project=chromium",
+    "e2e": "playwright test tests/e2e --project=chromium",
+
+    "full": "npm run ui && npm run api && npm run e2e"},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -12,14 +16,15 @@
     "@faker-js/faker": "^10.4.0",
     "@playwright/test": "^1.60.0",
     "@types/node": "^25.9.3",
+    "allure-playwright": "^3.10.0",
     "typescript": "^6.0.3"
   },
   "dependencies": {
     "ajv": "^8.20.0",
-    "allure-playwright": "^3.9.0",
     "axios": "^1.17.0",
     "csv-parser": "^3.2.1",
     "dotenv": "^17.4.2",
     "faker": "^6.6.6"
   }
+
 }

@@ -1,0 +1,2 @@
+Status = 200
+<?xml version="1.0" encoding="UTF-8"?><accounts><account><id>17673</id><customerId>14210</customerId><type>CHECKING</type><balance>515.50</balance></account><account><id>37431</id><customerId>14210</customerId><type>SAVINGS</type><balance>100.00</balance></account><account><id>39873</id><customerId>14210</customerId><type>SAVINGS</type><balance>100.00</balance></account><account><id>48864</id><customerId>14210</customerId><type>SAVINGS</type><balance>100.00</balance></account></accounts>

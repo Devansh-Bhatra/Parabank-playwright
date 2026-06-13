@@ -1,0 +1,200 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: UI\RegisterAccount.spec.ts >> Register Customer
+- Location: tests\UI\RegisterAccount.spec.ts:4:5
+
+# Error details
+
+```
+Error: expect(locator).toBeVisible() failed
+
+Locator: locator('text=Your account was created successfully')
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toBeVisible" with timeout 5000ms
+  - waiting for locator('text=Your account was created successfully')
+
+```
+
+```yaml
+- link:
+  - /url: admin.htm
+  - img
+- link "ParaBank":
+  - /url: index.htm
+  - img "ParaBank"
+- paragraph: Experience the difference
+- list:
+  - listitem: Solutions
+  - listitem:
+    - link "About Us":
+      - /url: about.htm
+  - listitem:
+    - link "Services":
+      - /url: services.htm
+  - listitem:
+    - link "Products":
+      - /url: http://www.parasoft.com/jsp/products.jsp
+  - listitem:
+    - link "Locations":
+      - /url: http://www.parasoft.com/jsp/pr/contacts.jsp
+  - listitem:
+    - link "Admin Page":
+      - /url: admin.htm
+- list:
+  - listitem:
+    - link "home":
+      - /url: index.htm
+  - listitem:
+    - link "about":
+      - /url: about.htm
+  - listitem:
+    - link "contact":
+      - /url: contact.htm
+- heading "Customer Login" [level=2]
+- paragraph: Username
+- textbox
+- paragraph: Password
+- textbox
+- button "Log In"
+- paragraph:
+  - link "Forgot login info?":
+    - /url: lookup.htm
+- paragraph:
+  - link "Register":
+    - /url: register.htm
+- heading "Signing up is easy!" [level=1]
+- paragraph: If you have an account with us you can sign-up for free instant online access. You will have to provide some personal information.
+- table:
+  - rowgroup:
+    - 'row "First Name: Devansh12"':
+      - cell "First Name:"
+      - cell "Devansh12":
+        - textbox: Devansh12
+      - cell
+    - 'row "Last Name: Bhatra"':
+      - cell "Last Name:"
+      - cell "Bhatra":
+        - textbox: Bhatra
+      - cell
+    - 'row "Address: Vaishali Nagar"':
+      - cell "Address:"
+      - cell "Vaishali Nagar":
+        - textbox: Vaishali Nagar
+      - cell
+    - 'row "City: Jaipur"':
+      - cell "City:"
+      - cell "Jaipur":
+        - textbox: Jaipur
+      - cell
+    - 'row "State: Rajasthan"':
+      - cell "State:"
+      - cell "Rajasthan":
+        - textbox: Rajasthan
+      - cell
+    - 'row "Zip Code: 302021"':
+      - cell "Zip Code:"
+      - cell "302021":
+        - textbox: "302021"
+      - cell
+    - 'row "Phone #: 9876543211"':
+      - 'cell "Phone #:"'
+      - cell "9876543211":
+        - textbox: "9876543211"
+      - cell
+    - 'row "SSN: 987654321"':
+      - cell "SSN:"
+      - cell "987654321":
+        - textbox: "987654321"
+      - cell
+    - row:
+      - cell
+    - 'row "Username: John61 This username already exists."':
+      - cell "Username:"
+      - cell "John61":
+        - textbox: John61
+      - cell "This username already exists."
+    - row "Password:":
+      - cell "Password:"
+      - cell:
+        - textbox
+      - cell
+    - row "Confirm:":
+      - cell "Confirm:"
+      - cell:
+        - textbox
+      - cell
+    - row "Register":
+      - cell
+      - cell "Register":
+        - button "Register"
+- list:
+  - listitem:
+    - link "Home":
+      - /url: index.htm
+    - text: "|"
+  - listitem:
+    - link "About Us":
+      - /url: about.htm
+    - text: "|"
+  - listitem:
+    - link "Services":
+      - /url: services.htm
+    - text: "|"
+  - listitem:
+    - link "Products":
+      - /url: http://www.parasoft.com/jsp/products.jsp
+    - text: "|"
+  - listitem:
+    - link "Locations":
+      - /url: http://www.parasoft.com/jsp/pr/contacts.jsp
+    - text: "|"
+  - listitem:
+    - link "Forum":
+      - /url: http://forums.parasoft.com/
+    - text: "|"
+  - listitem:
+    - link "Site Map":
+      - /url: sitemap.htm
+    - text: "|"
+  - listitem:
+    - link "Contact Us":
+      - /url: contact.htm
+- paragraph: © Parasoft. All rights reserved.
+- list:
+  - listitem: "Visit us at:"
+  - listitem:
+    - link "www.parasoft.com":
+      - /url: http://www.parasoft.com/
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from '@playwright/test'
+  2  | import RegisterCustomer from '../pages/RegisterCustomer'
+  3  | 
+  4  | test('Register Customer', async ({ page }) => {
+  5  | 
+  6  |     await page.goto('https://parabank.parasoft.com/parabank/register.htm')
+  7  | 
+  8  |     const register = new RegisterCustomer(page)
+  9  | 
+  10 |     await register.registerUser()
+  11 | 
+  12 |     await expect(
+  13 |         page.locator('text=Your account was created successfully')
+> 14 |     ).toBeVisible()
+     |       ^ Error: expect(locator).toBeVisible() failed
+  15 | 
+  16 | })
+```

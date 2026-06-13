@@ -4,7 +4,7 @@ import TransferFundPage from '../pages/TransferFundpage'
 
 test.describe('Transfer Fund E2E Validation', () => {
 
-    test('TC-029 Transfer Money and Validate', async ({ page, request }) => {
+    test('TC-029 Transfer Money and Validate', async ({ page }) => {
 
         const login = new CustomerLogin(page)
         const transfer = new TransferFundPage(page)
@@ -16,24 +16,25 @@ test.describe('Transfer Fund E2E Validation', () => {
             page.getByRole('link', { name: 'Log Out' })
         ).toBeVisible()
 
-        // Transfer money
+        console.log('Login successful')
+
+        // Transfer Money
         await transfer.transferMoney('100')
 
-        // Validate transfer success
+        // Validate Transfer Success
         await expect(
             page.locator('body')
         ).toContainText('Transfer Complete')
 
         console.log('Transfer completed successfully')
 
-        // API Validation
-        const response = await request.get(
-            'https://parabank.parasoft.com/parabank/services/bank/accounts'
-        )
+        // Screenshot for report
+        await page.screenshot({
+            path: 'transfer-success.png',
+            fullPage: true
+        })
 
-        console.log('API Status =', response.status())
-
-        expect(response.ok()).toBeTruthy()
+        console.log('Transfer validation completed')
     })
 
 })

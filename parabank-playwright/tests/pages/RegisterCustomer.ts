@@ -1,5 +1,7 @@
 import { Locator, Page } from "@playwright/test"
 import testData from "../Utils/LoginData.json"
+import * as fs from "fs"
+import * as path from "path"
 
 class RegisterCustomer {
 
@@ -37,6 +39,9 @@ class RegisterCustomer {
 
     async registerUser() {
 
+        const uniqueUser =
+            `devansh${Date.now()}`
+
         await this.firstName.fill(testData.firstName)
         await this.lastName.fill(testData.lastName)
         await this.address.fill(testData.address)
@@ -44,15 +49,36 @@ class RegisterCustomer {
         await this.state.fill(testData.state)
         await this.zipCode.fill(testData.zipCode)
         await this.phone.fill(testData.phone)
-       await this.ssn.fill(testData.ssn)
-        await this.username.fill(testData.username)
+        await this.ssn.fill(testData.ssn)
+
+        await this.username.fill(uniqueUser)
+
         await this.password.fill(testData.password)
         await this.confirmPassword.fill(testData.password)
 
         await this.registerBtn.click()
-        await this.page.waitForTimeout(3000)
 
-    console.log(await this.page.textContent('body'))
+        const filePath = path.resolve(
+            __dirname,
+            "../Utils/registeredUser.json"
+        )
+
+        fs.writeFileSync(
+            filePath,
+            JSON.stringify(
+                {
+                    username: uniqueUser,
+                    password: testData.password
+                },
+                null,
+                2
+            )
+        )
+
+        console.log(
+            "Registered User Saved:",
+            uniqueUser
+        )
     }
 }
 

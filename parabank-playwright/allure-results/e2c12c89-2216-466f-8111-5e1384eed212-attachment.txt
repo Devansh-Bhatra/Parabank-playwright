@@ -1,0 +1,3 @@
+Status = 200
+Response =
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><account><id>39873</id><customerId>14210</customerId><type>SAVINGS</type><balance>0</balance></account>
