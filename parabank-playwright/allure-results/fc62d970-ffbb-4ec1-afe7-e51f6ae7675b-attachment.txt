@@ -1,2 +1,0 @@
-Status = 200
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><account><id>34434</id><customerId>24533</customerId><type>CHECKING</type><balance>200.00</balance></account>

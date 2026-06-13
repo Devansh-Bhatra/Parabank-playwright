@@ -1,3 +1,0 @@
-Account ID = 15231
-Status = 200
-Response = <?xml version="1.0" encoding="UTF-8" standalone="yes"?><account><id>15231</id><customerId>12545</customerId><type>CHECKING</type><balance>100.00</balance></account>

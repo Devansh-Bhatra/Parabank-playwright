@@ -1,3 +1,0 @@
-Account ID = 39096
-Status = 200
-<?xml version="1.0" encoding="UTF-8"?><transactions><transaction><id>48664</id><accountId>39096</accountId><type>Credit</type><date>2026-06-13T00:00:00.000Z</date><amount>100.00</amount><description>Funds Transfer Received</description></transaction><transaction><id>49885</id><accountId>39096</accountId><type>Credit</type><date>2026-06-13T00:00:00.000Z</date><amount>100.00</amount><description>Funds Transfer Received</description></transaction></transactions>

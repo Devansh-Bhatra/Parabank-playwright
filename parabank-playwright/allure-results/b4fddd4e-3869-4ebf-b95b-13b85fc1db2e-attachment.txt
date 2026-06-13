@@ -1,3 +1,0 @@
-Login successful
-Transfer completed successfully
-Transfer validation completed
