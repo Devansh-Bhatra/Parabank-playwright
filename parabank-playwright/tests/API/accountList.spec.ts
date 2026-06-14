@@ -2,19 +2,23 @@ import { test, expect } from '@playwright/test'
 
 test('Get Accounts List', async ({ request }) => {
 
-    const customerId = 14210
+    const customerId = 14210; // Isko latest valid customerId se replace karo
 
     const response = await request.get(
         `https://parabank.parasoft.com/parabank/services/bank/customers/${customerId}/accounts`
-    )
+    );
 
-    console.log('Status =', response.status())
+    const body = await response.text();
 
-    expect(response.status()).toBe(200)
+    console.log('Customer ID =', customerId);
+    console.log('Status =', response.status());
+    console.log('Response =');
+    console.log(body);
 
-    const body = await response.text()
+    expect(
+        response.status(),
+        `API failed. Response: ${body}`
+    ).toBe(200);
 
-    console.log(body)
-
-    expect(body).toContain('<account>')
-})
+    expect(body).toContain('<account>');
+});
