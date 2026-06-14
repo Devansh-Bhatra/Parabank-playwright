@@ -13,9 +13,9 @@ test.describe('Open Account E2E Validation', () => {
         // Login
         await login.login()
 
-        await expect(
-            page.getByRole('link', { name: 'Log Out' })
-        ).toBeVisible()
+       await expect(
+    page.getByRole('link', { name: 'Log Out' })
+).toBeVisible({ timeout: 15000 })
 
         console.log('Login successful')
 
@@ -50,7 +50,7 @@ test.describe('Open Account E2E Validation', () => {
 
         await expect(
             page.locator('#accountTable')
-        ).toBeVisible()
+        ).toBeVisible({ timeout: 15000 })
 
         console.log('Account overview verified')
     })

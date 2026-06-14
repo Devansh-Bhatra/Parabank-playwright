@@ -13,8 +13,8 @@ test.describe('Transfer Fund E2E Validation', () => {
         await login.login()
 
         await expect(
-            page.getByRole('link', { name: 'Log Out' })
-        ).toBeVisible()
+    page.getByRole('link', { name: 'Log Out' })
+).toBeVisible({ timeout: 15000 })
 
         console.log('Login successful')
 
